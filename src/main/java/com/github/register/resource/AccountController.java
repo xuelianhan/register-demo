@@ -8,6 +8,8 @@ import com.github.register.domain.account.validation.UniqueAccount;
 import com.github.register.infrastructure.jaxrs.CommonResponse;
 import javax.validation.Valid;
 import javax.inject.Inject;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -43,7 +45,7 @@ public class AccountController {
      */
     @GET
     @Path("/{username}")
-    @Cacheable(key = "#username")
+    //@Cacheable(key = "#username")
     public Account getUser(@PathParam("username") String username) {
         return service.findAccountByUsername(username);
     }
@@ -72,7 +74,7 @@ public class AccountController {
      */
     @PUT
     @CacheEvict(key = "#user.username")
-    public Response markUserDeleted(@Valid @AuthenticatedAccount @NotConflictAccount Account user, Integer deletedUserId) {
+    public Response markUserDeleted(@Valid @AuthenticatedAccount @NotConflictAccount Account user, @NotNull Integer deletedUserId) {
         return CommonResponse.op(() -> service.markAccountDeletedById(deletedUserId));
     }
 
@@ -81,7 +83,7 @@ public class AccountController {
      */
     @PUT
     @CacheEvict(key = "#user.username")
-    public Response markUsersDelete(@Valid @AuthenticatedAccount @NotConflictAccount Account user, List<Integer> ids) {
+    public Response markUsersDelete(@Valid @AuthenticatedAccount @NotConflictAccount Account user, @NotEmpty List<Integer> ids) {
         return CommonResponse.op(() -> service.markAccountDeletedByIds(ids));
     }
 

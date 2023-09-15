@@ -10,6 +10,16 @@ spring:
     port: 6379
     password:
     timeout: 60000
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: setusername
+    password: setpassword
+    auth: true
+    starttls:
+      enable: true
+
+
 
 logging:
   pattern:
