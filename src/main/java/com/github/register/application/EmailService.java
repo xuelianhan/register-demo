@@ -16,7 +16,6 @@ import javax.transaction.Transactional;
  * @date 15 Sep 2023
  */
 @Named
-@Transactional
 public class EmailService {
 
     private static final String HTML_CONTENT_TYPE = "text/html; charset=utf-8";
