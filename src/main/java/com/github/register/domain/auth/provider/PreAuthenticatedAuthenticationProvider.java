@@ -13,13 +13,19 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedC
 
 
 /**
- * 预验证身份认证器
+ * Pre-authenticated Authenticator
  * <p>
- * 预验证是指身份已经在其他地方（第三方）确认过
- * 预验证器的目的是将第三方身份管理系统集成到具有Spring安全性的Spring应用程序中，在本项目中，用于JWT令牌过期后重刷新时的验证
- * 此时只要检查用户是否有停用、锁定、密码过期、账号过期等问题，如果没有，可根据JWT令牌的刷新过期期限，重新给客户端发放访问令牌
+ * 1.Pre-validator means that the identity has already been validated elsewhere (by a third party)
  *
- * @author
+ * 2.The purpose of the pre-validator is to integrate a third-party identity management system
+ * into a Spring application with Spring security,
+ * which in this project is used when the JWT token is refreshed after it expires
+ *
+ * 3.At this time, just check whether the user has deactivation, lockout, password expiration, account expiration, etc.
+ * If not, you can re-issue the access token to the client according to the JWT token refresh expiration period
+ *
+ * @author zhouzhiming
+ * @author sniper
  * @date
  * @see <a href="https://docs.spring.io/spring-security/site/docs/3.0.x/reference/preauth.html">Pre-Authentication Scenarios</a>
  **/
@@ -30,20 +36,21 @@ public class PreAuthenticatedAuthenticationProvider implements AuthenticationPro
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         if (authentication.getPrincipal() instanceof UsernamePasswordAuthenticationToken) {
             AuthenticAccount user = (AuthenticAccount) ((UsernamePasswordAuthenticationToken) authentication.getPrincipal()).getPrincipal();
-            // 检查用户没有停用、锁定、密码过期、账号过期等问题
-            // 在本项目中这些功能都未启用，实际上此检查肯定是会通过的，但为了严谨和日后扩展，还是依次进行了检查
+            // Check that the user is not deactivated, locked out, password expired, account expired, etc.
+            // In this project, none of these features are enabled, so this check would actually pass,
+            // but for the sake of rigor and future expansion, it's done in order.
             if (user.isEnabled() && user.isCredentialsNonExpired() && user.isAccountNonExpired() && user.isCredentialsNonExpired()) {
                 return new PreAuthenticatedAuthenticationToken(user, "", user.getAuthorities());
             } else {
-                throw new DisabledException("用户状态不正确");
+                throw new DisabledException("Incorrect user status");
             }
         } else {
-            throw new PreAuthenticatedCredentialsNotFoundException("预验证失败，传上来的令牌是怎么来的？");
+            throw new PreAuthenticatedCredentialsNotFoundException("Pre-verification failed, where did the uploaded token come from?");
         }
     }
 
     /**
-     * 判断该验证器能处理哪些认证
+     * Determine which authentications this authenticator can handle
      */
     @Override
     public boolean supports(Class<?> clazz) {

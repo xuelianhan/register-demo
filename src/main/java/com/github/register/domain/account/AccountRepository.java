@@ -14,7 +14,8 @@ import java.util.Set;
 /**
  * User Object Data Repository
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 @CacheConfig(cacheNames = "repository.account")
@@ -44,8 +45,9 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
     boolean existsByUsername(String username);
 
 
-    // 覆盖以下父类中需要处理缓存失效的方法
-    // 父类取不到CacheConfig的配置信息，所以不能抽象成一个通用的父类接口中完成
+    // Override the following methods in the parent class that need to handle cache invalidation
+    // The parent class can't fetch CacheConfig's configuration information,
+    // so it can't be abstracted into a generic parent interface to do so.
     @Caching(evict = {
             @CacheEvict(key = "#entity.id"),
             @CacheEvict(key = "#entity.username")

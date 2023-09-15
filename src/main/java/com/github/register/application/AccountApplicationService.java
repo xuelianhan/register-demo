@@ -14,6 +14,7 @@ import java.util.Optional;
 
 /**
  * Application Service Interface for user resources
+ * @author zhouzhiming
  * @author sniper
  * @date Fri Sep 15, 2023
  **/

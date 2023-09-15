@@ -11,11 +11,12 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * 表示一个用户是唯一的
+ * Indicates that an account is unique
  * <p>
- * 唯一不仅仅是用户名，还要求手机、邮箱均不允许重复
+ * The unique means that not only the username, but also the cell phone and email are not allowed to be duplicated.
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 @Documented
@@ -23,7 +24,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({FIELD, METHOD, PARAMETER, TYPE})
 @Constraint(validatedBy = AccountValidation.UniqueAccountValidator.class)
 public @interface UniqueAccount {
-    String message() default "用户名称、邮箱、手机号码均不允许与现存用户重复";
+    String message() default "username, e-mail address and cell phone number are not allowed to be duplicated with existing accounts.";
 
     Class<?>[] groups() default {};
 

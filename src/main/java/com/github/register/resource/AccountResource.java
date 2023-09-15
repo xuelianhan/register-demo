@@ -25,11 +25,13 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * 用户资源fdff
+ * Account Resource
  * <p>
- * 对客户端以Restful形式暴露资源，提供对用户资源{@link Account}的管理入口
+ * Expose resources to the client in a Restful form,
+ * providing an entry point to manage the user's resources {@link Account}.
  * @see <a href="https://mkyong.com/webservices/jax-rs/jax-rs-pathparam-example/"></a>
  *
+ * @author zhouzhiming
  * @author sniper
  * @date Fri Seq 15, 2023
  **/
@@ -54,7 +56,6 @@ public class AccountResource {
     //@Cacheable(key = "#username")
     public Account getUser(@PathParam("username") String username) {
         log.info("username:{}", username);
-        System.out.println("username:" + username);
         return service.findAccountByUsername(username);
     }
 
@@ -64,6 +65,7 @@ public class AccountResource {
     @POST
     @CacheEvict(key = "#user.username")
     public Response createUser(@Valid @UniqueAccount Account user) {
+        log.info("user:{}", user);
         return CommonResponse.op(() -> service.createAccount(user));
     }
 

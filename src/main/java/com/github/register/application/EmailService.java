@@ -6,10 +6,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.transaction.Transactional;
 
 /**
  * @author sniper

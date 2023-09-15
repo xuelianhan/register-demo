@@ -12,10 +12,11 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * 代表用户必须与当前登陆的用户一致
- * 相当于使用Spring Security的@PreAuthorize("#{user.name == authentication.name}")的验证
+ * The user must be the same as the currently logged-in user
+ * The equivalent of using Spring Security's @PreAuthorize("#{user.name == authentication.name}") authentication
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 @Documented
@@ -23,7 +24,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({FIELD, METHOD, PARAMETER, TYPE})
 @Constraint(validatedBy = AccountValidation.AuthenticatedAccountValidator.class)
 public @interface AuthenticatedAccount {
-    String message() default "不是当前登陆用户";
+    String message() default "Not the currently logged-in user";
 
     Class<?>[] groups() default {};
 

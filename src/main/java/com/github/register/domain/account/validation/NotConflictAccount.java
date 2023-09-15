@@ -12,11 +12,15 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * 表示一个用户的信息是无冲突的
+ * Indicates that an account's information is conflict-free
  * <p>
- * “无冲突”是指该用户的敏感信息与其他用户不重合，譬如将一个注册用户的邮箱，修改成与另外一个已存在的注册用户一致的值，这便是冲突
+ * "Conflict-free" means that the account's sensitive information does not overlap with that of other accounts,
+ * e.g.,
+ * changing a registered account's email address to a value that
+ * matches that of an existing registered account is a conflict.
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 @Documented
@@ -24,7 +28,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({FIELD, METHOD, PARAMETER, TYPE})
 @Constraint(validatedBy = AccountValidation.NotConflictAccountValidator.class)
 public @interface NotConflictAccount {
-    String message() default "用户名称、邮箱、手机号码与现存用户产生重复";
+    String message() default "Duplication of accounts' names, e-mail addresses, and cell phone numbers with existing accounts";
 
     Class<?>[] groups() default {};
 

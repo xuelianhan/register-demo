@@ -13,7 +13,8 @@ import javax.validation.ConstraintViolation;
 import java.util.stream.Collectors;
 
 /**
- * 用于统一处理在Resource中由于验证器验证失败而带回客户端的错误信息
+ * This class is used to unify the handling of error messages
+ * that brought back to the client in Resource due to validator validation failures.
  *
  * @author
  * @date
@@ -25,7 +26,7 @@ public class ViolationExceptionMapper implements ExceptionMapper<ConstraintViola
 
     @Override
     public Response toResponse(ConstraintViolationException exception) {
-        log.warn("客户端传入了校验结果为非法的数据", exception);
+        log.warn("The data passed in from clients has illegal checksum results", exception);
         String msg = exception.getConstraintViolations().stream().map(ConstraintViolation::getMessage).collect(Collectors.joining("；"));
         return CommonResponse.send(Response.Status.BAD_REQUEST, msg);
     }

@@ -12,7 +12,7 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * 代表一个用户在数据仓库中是存在的
+ * Represents that a user is present in the data warehouse
  *
  * @author
  * @date
@@ -22,7 +22,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({FIELD, METHOD, PARAMETER, TYPE})
 @Constraint(validatedBy = AccountValidation.ExistsAccountValidator.class)
 public @interface ExistsAccount {
-    String message() default "用户不存在";
+    String message() default "Account does not exist";
 
     Class<?>[] groups() default {};
 

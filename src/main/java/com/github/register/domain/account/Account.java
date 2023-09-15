@@ -12,7 +12,8 @@ import javax.validation.constraints.Pattern;
 /**
  * Entity of User
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  */
 @Entity
@@ -45,11 +46,11 @@ public class Account extends BaseEntity {
     private String location;
 
     /**
-     * Whether or not the status is deleted:
+     * Whether the status is deleted:
      * 0: exist
      * 1: deleted.
      */
-    private Integer deleted;
+    private Integer deleted = 0;
 
     public String getUsername() {
         return username;

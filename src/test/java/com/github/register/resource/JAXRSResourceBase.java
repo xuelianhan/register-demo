@@ -48,7 +48,7 @@ class JAXRSResourceBase extends com.github.register.DBRollbackBase {
     }
 
     /**
-     * 单元测试中登陆固定使用sniper这个用户
+     * The unit test always uses the user of sniper for logins.
      */
     void login() {
         String url = "http://localhost:" + port + "/oauth/token?username=sniper&password=MFfTW3uNI4eqhwDkG7HP9p2mzEUu%2Fr2&grant_type=password&client_id=imagebase&client_secret=ImageBase2023Run";
@@ -103,27 +103,27 @@ class JAXRSResourceBase extends com.github.register.DBRollbackBase {
     }
 
     static void assertOK(Response response) {
-        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus(), "期望HTTP Status Code应为：200/OK");
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus(), "Expected HTTP Status Code: 200/OK");
     }
 
     static void assertNoContent(Response response) {
-        assertEquals(Response.Status.NO_CONTENT.getStatusCode(), response.getStatus(), "期望HTTP Status Code应为：204/NO_CONTENT");
+        assertEquals(Response.Status.NO_CONTENT.getStatusCode(), response.getStatus(), "Expected HTTP Status Code: 204/NO_CONTENT");
     }
 
     static void assertBadRequest(Response response) {
-        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus(), "期望HTTP Status Code应为：400/BAD_REQUEST");
+        assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus(), "Expected HTTP Status Code: 400/BAD_REQUEST");
     }
 
     static void assertForbidden(Response response) {
-        assertEquals(Response.Status.FORBIDDEN.getStatusCode(), response.getStatus(), "期望HTTP Status Code应为：403/FORBIDDEN");
+        assertEquals(Response.Status.FORBIDDEN.getStatusCode(), response.getStatus(), "Expected HTTP Status Code: 403/FORBIDDEN");
     }
 
     static void assertServerError(Response response) {
-        assertEquals(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), response.getStatus(), "期望HTTP Status Code应为：500/INTERNAL_SERVER_ERROR");
+        assertEquals(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), response.getStatus(), "Expected HTTP Status Code: 500/INTERNAL_SERVER_ERROR");
     }
 
     static void assertNotFound(Response response) {
-        assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus(), "期望HTTP Status Code应为：404/NOT_FOUND");
+        assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus(), "Expected HTTP Status Code: 404/NOT_FOUND");
     }
 
 
