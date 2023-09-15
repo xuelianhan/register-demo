@@ -33,8 +33,6 @@ import org.slf4j.LoggerFactory;
  * @author sniper
  * @date Fri Seq 15, 2023
  **/
-
-
 @Path("/accounts")
 @Component
 @CacheConfig(cacheNames = "resource.account")
@@ -82,23 +80,22 @@ public class AccountResource {
     /**
      * Marking an individual user as deleted
      */
-    /*@GET
+    @GET
     @Path("/markUserDeleted")
     @RolesAllowed(Role.ADMIN)
     public Response markUserDeleted(@Valid @AuthenticatedAccount Account user, @QueryParam("deletedUserId")Integer deletedUserId) {
         return CommonResponse.op(() -> service.markAccountDeletedById(deletedUserId));
-    }*/
+    }
 
     /**
      * Mark multiple users as delete
      */
-   /* @POST
+    @POST
     @Path("/markUsersDeleted/")
     @RolesAllowed(Role.ADMIN)
-    public Response markUsersDeleted(@Valid @AuthenticatedAccount Account user, List<Integer> ids) {
+    public Response markUsersDeleted(@Valid @AuthenticatedAccount Account user, @FormParam("ids") List<Integer> ids) {
         return CommonResponse.op(() -> service.markAccountDeletedByIds(ids));
-    }*/
-
+    }
 
 
 }

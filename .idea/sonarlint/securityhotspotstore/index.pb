@@ -12,10 +12,6 @@ Msrc/main/java/com/github/register/domain/auth/AuthenticAccountRepository.java,
 compose.yaml,2/7/2701071a1490f4576d914b0b84bc3185e0aa2854
 Œ
 \src/main/java/com/github/register/infrastructure/configuration/WebSecurityConfiguration.java,b/f/bf4c7dc4806f2cf83e083b25c691129b2aa25ffd
-”
-dsrc/main/java/com/github/register/infrastructure/configuration/AuthorizationServerConfiguration.java,2/3/236dbf4057e4cc92a02aa9354409dd6fc7cdfea0
-•
-esrc/main/java/com/github/register/infrastructure/configuration/AuthenticationServerConfiguration.java,a/f/afea453470340466fbb92c67b47166a14f444617
 x
 Hsrc/main/java/com/github/register/infrastructure/utility/Encryption.java,7/6/76226c78e7b1ff5c4869e9277921386d516273ef
 
@@ -47,8 +43,6 @@ o
 mvnw,5/d/5d837c4ed85ecaaf932c506e80ff5d7b9f3d590d
 ~
 Nsrc/main/java/com/github/register/domain/account/validation/ExistsAccount.java,1/b/1b9d261c259cfd77f6f3a0c4bc27253ff6d3748d
-~
-Nsrc/main/java/com/github/register/domain/account/validation/UniqueAccount.java,a/3/a33653e52910dc8ec09560a775666b0586901617
 s
 Csrc/main/java/com/github/register/domain/auth/AuthenticAccount.java,c/7/c779214a0fe8e8a6673df6928f3b052cc2591c00
 g
@@ -87,7 +81,3 @@ Usrc/main/java/com/github/register/domain/account/validation/AuthenticatedAccoun
 _src/main/java/com/github/register/infrastructure/configuration/ResourceServerConfiguration.java,e/c/ec21d5b96e73e80c13afac2203146bec27021ac4
 „
 Tsrc/main/java/com/github/register/infrastructure/configuration/WebConfiguration.java,4/7/47f4e95291f161b548921f60d4aa9f750a4c789e
-s
-Csrc/test/java/com/github/register/resource/AccountResourceTest.java,9/1/917f5935b7c14297e8996886265312e033ea16d3
-q
-Asrc/test/java/com/github/register/resource/JAXRSResourceBase.java,4/e/4e044fcf192d978e74c08b3c9ccc98c170539db3

@@ -10,12 +10,8 @@ S
 Msrc/main/java/com/github/register/domain/auth/AuthenticAccountRepository.java,1/4/14e3b435e6a0e2b9ba27f769a4ca7d1f2dda39e8
 <
 compose.yaml,2/7/2701071a1490f4576d914b0b84bc3185e0aa2854
-”
-dsrc/main/java/com/github/register/infrastructure/configuration/AuthorizationServerConfiguration.java,2/3/236dbf4057e4cc92a02aa9354409dd6fc7cdfea0
 Œ
 \src/main/java/com/github/register/infrastructure/configuration/WebSecurityConfiguration.java,b/f/bf4c7dc4806f2cf83e083b25c691129b2aa25ffd
-•
-esrc/main/java/com/github/register/infrastructure/configuration/AuthenticationServerConfiguration.java,a/f/afea453470340466fbb92c67b47166a14f444617
 
 Osrc/main/java/com/github/register/infrastructure/jaxrs/BaseExceptionMapper.java,f/7/f7b3453c8cf30efc97826f7a08fd8412e50ccfc9
 x
@@ -45,8 +41,6 @@ o
 docker_push.sh,f/7/f731ba7cbceb94e8d197ee3cf7949f5754339b59
 4
 mvnw,5/d/5d837c4ed85ecaaf932c506e80ff5d7b9f3d590d
-~
-Nsrc/main/java/com/github/register/domain/account/validation/UniqueAccount.java,a/3/a33653e52910dc8ec09560a775666b0586901617
 s
 Csrc/main/java/com/github/register/domain/auth/AuthenticAccount.java,c/7/c779214a0fe8e8a6673df6928f3b052cc2591c00
 g
@@ -87,7 +81,3 @@ _src/main/java/com/github/register/infrastructure/configuration/ResourceServerCo
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 „
 Tsrc/main/java/com/github/register/infrastructure/configuration/WebConfiguration.java,4/7/47f4e95291f161b548921f60d4aa9f750a4c789e
-q
-Asrc/test/java/com/github/register/resource/JAXRSResourceBase.java,4/e/4e044fcf192d978e74c08b3c9ccc98c170539db3
-s
-Csrc/test/java/com/github/register/resource/AccountResourceTest.java,9/1/917f5935b7c14297e8996886265312e033ea16d3

@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class JAXRSResourceBase extends com.github.register.DBRollbackBase {
 
     @Value("${local.server.port}")
-    private int port;
+    protected int port;
 
     private String accessToken = null;
 
