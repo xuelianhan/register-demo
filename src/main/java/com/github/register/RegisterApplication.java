@@ -1,4 +1,4 @@
-package com.ict.register;
+package com.github.register;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
