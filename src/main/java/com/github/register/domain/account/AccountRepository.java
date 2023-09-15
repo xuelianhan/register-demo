@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * 用户对象数据仓库
@@ -57,7 +58,7 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
     @Cacheable(key = "#id")
     Optional<Account> findById(Integer id);
 
-    List<Account> findAllById(List<Integer> ids);
+    List<Account> findAllByIdIn(Set<Integer> ids);
 
     @Cacheable(key = "#id")
     boolean existsById(Integer id);

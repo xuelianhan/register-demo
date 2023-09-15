@@ -7,6 +7,7 @@ import com.github.register.infrastructure.utility.Encryption;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,7 +53,7 @@ public class AccountApplicationService {
     }
 
     public void markAccountDeletedByIds(List<Integer> ids) {
-        List<Account> list = repository.findAllById(ids);
+        List<Account> list = repository.findAllByIdIn(new HashSet<>(ids));
         if (null == list || list.isEmpty()) {
             return;
         }

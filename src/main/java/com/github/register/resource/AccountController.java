@@ -16,6 +16,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 /**
  * 用户资源
@@ -66,21 +68,21 @@ public class AccountController {
 
 
     /**
-     * 更新用户信息
+     * 标记单个用户为删除状态
      */
     @PUT
     @CacheEvict(key = "#user.username")
-    public Response markUserDeleted(@Valid @AuthenticatedAccount @NotConflictAccount Account user) {
-        return CommonResponse.op(() -> service.updateAccount(user));
+    public Response markUserDeleted(@Valid @AuthenticatedAccount @NotConflictAccount Account user, Integer deletedUserId) {
+        return CommonResponse.op(() -> service.markAccountDeletedById(deletedUserId));
     }
 
     /**
-     * 更新用户信息
+     * 标记多个用户为删除状态
      */
     @PUT
     @CacheEvict(key = "#user.username")
-    public Response markUsersDelete(@Valid @AuthenticatedAccount @NotConflictAccount Account user) {
-        return CommonResponse.op(() -> service.updateAccount(user));
+    public Response markUsersDelete(@Valid @AuthenticatedAccount @NotConflictAccount Account user, List<Integer> ids) {
+        return CommonResponse.op(() -> service.markAccountDeletedByIds(ids));
     }
 
 
