@@ -3,11 +3,11 @@ package com.github.register.infrastructure.jaxrs;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * 带编码的实体容器
+ * Entity containers with codes
  * <p>
- * 一般来说REST服务应采用HTTP Status Code带回错误信息编码
- * 但很多前端开发都习惯以JSON-RPC的风格处理异常，所以仍然保留这个编码容器
- * 用于返回给客户端以形式为“{code,message,data}”的对象格式
+ * Generally speaking, REST services should use HTTP Status Code to bring back the error message code.
+ * But many front-end developers are accustomed to handling exceptions in JSON-RPC style.
+ * So this code container is still retained, and used to return to the client in the form of "{code,message,data}" object format.
  *
  * @author
  * @date
@@ -15,11 +15,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CodedMessage {
     /**
-     * 约定的成功标志
+     * Signs of Success
      */
     public static final Integer CODE_SUCCESS = 0;
     /**
-     * 默认的失败标志，其他失败含义可以自定义
+     * Default failure flag, other failure meanings can be customized
      */
     public static final Integer CODE_DEFAULT_FAILURE = 1;
 

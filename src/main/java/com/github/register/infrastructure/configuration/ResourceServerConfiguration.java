@@ -16,15 +16,18 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 
 /**
- * 资源服务器配置
+ * Resource server configuration
  * <p>
- * 配置资源服务访问权限，主流有两种方式：
- * 一是在这里通过{@link HttpSecurity}的<code>antMatchers</code>方法集中配置
- * 二是启用全局方法级安全支持{@link EnableGlobalMethodSecurity} 在各个资源的访问方法前，通过注解来逐个配置，使用的注解包括有：
- * JSR 250标准注解{@link RolesAllowed}，可完整替代Spring的{@link Secured}功能
- * 以及可以使用EL表达式的Spring注解{@link PreAuthorize}、{@link PostAuthorize}
+ * There are two main ways to configure resource service access rights:
+ * One is configured centrally here via the <code>antMatchers</code> method of {@link HttpSecurity}.
+ * The second is to enable global method level security support {@link EnableGlobalMethodSecurity}
+ * Configure each resource one by one by using annotations in front of the access methods of each resource,
+ * the annotations used include the following:
+ * JSR 250 standard annotation {@link RolesAllowed}, complete replacement for Spring's {@link Secured} functionality
+ * and Spring annotations {@link PreAuthorize}, {@link PostAuthorize} that can use EL expressions.
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 @Configuration
@@ -35,17 +38,17 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     private JWTAccessTokenService tokenService;
 
     /**
-     * 配置HTTP访问相关的安全选项
+     * Configure security options related to HTTP access
      */
     public void configure(HttpSecurity http) throws Exception {
-        // 基于JWT来绑定用户状态，所以服务端可以是无状态的
+        // Bind user state based on JWT, so the server side can be stateless
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        // 关闭CSRF（Cross Site Request Forgery）跨站请求伪造的防御
-        // 因为需要状态存储CSRF Token才能开启该功能
+        // Turn off CSRF (Cross Site Request Forgery) Cross Site Request Forgery Defense
+        // To enable this feature only the state is required to store the CSRF Token.
         http.csrf(csrf -> csrf.disable());
-        // 关闭HTTP Header中的X-Frame-Options选项，允许页面在frame标签中打开
+        // Turn off the X-Frame-Options option in the HTTP Header to allow pages to open in frame tags
         http.headers(headers -> headers.frameOptions(fo -> fo.disable()));
-        // 设置服务的安全规则
+        // Setting up security rules for services
         http.authorizeRequests().antMatchers("/oauth/**").permitAll();
     }
 

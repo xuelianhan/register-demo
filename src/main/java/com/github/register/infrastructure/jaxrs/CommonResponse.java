@@ -18,6 +18,7 @@ import java.util.function.Consumer;
  * - When the service call is completed normally, the return Code is always expressed as 0.
  * - When the service call produces an exception , you can customize the Code value is not 0 , the Message field as a return to the client's details .
  *
+ * @authour zhouzhiming
  * @author sniper
  * @see <a href="https://www.baeldung.com/jax-rs-spec-and-implementations"></a>
  * @date
@@ -27,7 +28,7 @@ public abstract class CommonResponse {
     private static final Logger log = LoggerFactory.getLogger(CommonResponse.class);
 
     /**
-     * 向客户端发送自定义操作信息
+     * Send customized action messages to clients
      */
     public static Response send(Response.Status status, String message) {
         Integer code = status.getFamily() == Response.Status.Family.SUCCESSFUL ? CodedMessage.CODE_SUCCESS : CodedMessage.CODE_DEFAULT_FAILURE;
@@ -35,37 +36,42 @@ public abstract class CommonResponse {
     }
 
     /**
-     * 向客户端发送操作失败的信息
+     * Send operation failure message to clients
      */
     public static Response failure(String message) {
         return send(Response.Status.INTERNAL_SERVER_ERROR, message);
     }
 
     /**
-     * 向客户端发送操作成功的信息
+     * Send a successful operation message to clients
      */
     public static Response success(String message) {
         return send(Response.Status.OK, message);
     }
 
     /**
-     * 向客户端发送操作成功的信息
+     * Send a successful operation message to the client.
      */
     public static Response success() {
         return send(Response.Status.OK, "操作已成功");
     }
 
     /**
-     * 执行操作，并根据操作是否成功返回给客户端相应信息
-     * 封装了在服务端接口中很常见的执行操作，成功返回成功标志、失败返回失败标志的通用操作，用于简化编码
+     * Execute the operation and return the corresponding information to the client according to whether the operation is successful or not.
+     * Encapsulates the common operations that are commonly performed in server-side interfaces,
+     * and returns a success flag for success and a failure flag for failure,
+     * which is used to simplify coding.
      */
     public static Response op(Runnable executor) {
         return op(executor, e -> log.error(e.getMessage(), e));
     }
 
     /**
-     * 执行操作（带自定义的失败处理），并根据操作是否成功返回给客户端相应信息
-     * 封装了在服务端接口中很常见的执行操作，成功返回成功标志、失败返回失败标志的通用操作，用于简化编码
+     * Execute the operation (with customized failure handling),
+     * and return the corresponding information to the client according to whether the operation is successful or not.
+     * Encapsulates the common operations that are commonly performed in server-side interfaces,
+     * returning success flags for success and failure flags for failure,
+     * which is used to simplify coding.
      */
     public static Response op(Runnable executor, Consumer<Exception> exceptionConsumer) {
         try {

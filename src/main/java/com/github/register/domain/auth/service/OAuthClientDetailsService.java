@@ -12,30 +12,42 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
 
 
 /**
- * OAuth2客户端类型定义
+ * OAuth2 Client Type Definitions
  * <p>
- * OAuth2支持四种授权模式，这里仅定义了密码模式（Resource Owner Password Credentials Grant）一种
- * OAuth2作为开放的（面向不同服务提供商）授权协议，要求用户提供明文用户名、密码的这种“密码模式”并不常用
- * 而这里可以采用是因为前端与后端服务是属于同一个服务提供者的，实质上不存在密码会不会被第三方保存的敏感问题
- * 如果永远只考虑单体架构、单一服务提供者，则并无引入OAuth的必要，Spring Security的表单认证就能很良好、便捷地解决认证和授权的问题
- * 这里使用密码模式来解决，是为了下一阶段演示微服务化后，服务之间鉴权作准备，以便后续扩展以及对比。
+ * OAuth2 supports four authorization modes, only one of which is defined here as Resource Owner Password Credentials Grant.
+ * OAuth2 as an open (for different service providers) authorization protocol,
+ * requiring users to provide plaintext usernames, passwords, this "password mode" is not commonly used.
  *
- * @author
+ * And this "password mode" can be used here because the front-end and back-end services belong to the same service provider,
+ * in essence, there is no password will not be saved by a third party of sensitive issues.
+ *
+ * If you only ever consider a monolithic architecture, a single service provider,
+ * there is no need to introduce OAuth,
+ * Spring Security's form authentication can be a good and convenient solution
+ * to the authentication and authorization problem
+ * At Here, the password pattern is used to solve the problem.
+ *
+ * The use of password mode to solve here is for the next stage of demonstration of microservice
+ * after the authentication between services in preparation for the subsequent expansion as well as comparison.
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 @Named
 public class OAuthClientDetailsService implements ClientDetailsService {
 
     /**
-     * 客户端ID
-     * 这里的客户端就是指本项目的前端代码
+     * Client ID
+     * The client here is the front-end code for this project
      */
-    private static final String CLIENT_ID = "bookstore_frontend";
+    private static final String CLIENT_ID = "imagebase_frontend";
     /**
-     * 客户端密钥
-     * 在OAuth2协议中，ID是可以公开的，密钥应当保密，密钥用以证明当前申请授权的客户端是未被冒充的
+     * Client key
+     * In the OAuth2 protocol, the ID is publicly available,
+     * and the key, which proves that the client currently requesting authorization has not been impersonated,
+     * should be kept secret
      */
-    private static final String CLIENT_SECRET = "bookstore_secret";
+    private static final String CLIENT_SECRET = "imagebase_secret";
 
     @Inject
     private PasswordEncoder passwordEncoder;
@@ -43,19 +55,21 @@ public class OAuthClientDetailsService implements ClientDetailsService {
     private ClientDetailsService clientDetailsService;
 
     /**
-     * 构造密码授权模式
+     * Construct a password authorization schema
      * <p>
-     * 由于实质上只有一个客户端，所以就不考虑存储和客户端的增删改查了，直接在内存中配置出客户端的信息
+     * Since there is essentially only one client,
+     * forget about storage and client additions, deletions, and changes, and configure the client directly in memory
      * <p>
-     * 授权Endpoint示例：
-     * /oauth/token?grant_type=password & username=#USER# & password=#PWD# & client_id=bookstore_frontend & client_secret=bookstore_secret
-     * 刷新令牌Endpoint示例：
-     * /oauth/token?grant_type=refresh_token & refresh_token=#REFRESH_TOKEN# & client_id=bookstore_frontend & client_secret=bookstore_secret
+     * Authorization Endpoint example:
+     * /oauth/token?grant_type=password & username=#USER# & password=#PWD# & client_id=imagebase_frontend & client_secret=imagebase_secret
+     * Refresh Token Endpoint Example:
+     * /oauth/token?grant_type=refresh_token & refresh_token=#REFRESH_TOKEN# & client_id=imagebase_frontend & client_secret=imagebase_secret
      */
     @PostConstruct
     public void init() throws Exception {
         InMemoryClientDetailsServiceBuilder builder = new InMemoryClientDetailsServiceBuilder();
-        // 提供客户端ID和密钥，并指定该客户端支持密码授权、刷新令牌两种访问类型
+        // Provide the client ID and key,
+        // and specify that the client supports both password-authorized and refresh token access types.
         builder.withClient(CLIENT_ID)
                 .secret(passwordEncoder.encode(CLIENT_SECRET))
                 .scopes("BROWSER")
@@ -64,7 +78,7 @@ public class OAuthClientDetailsService implements ClientDetailsService {
     }
 
     /**
-     * 外部根据客户端ID查询验证方式
+     * External query authentication method based on client ID
      */
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {

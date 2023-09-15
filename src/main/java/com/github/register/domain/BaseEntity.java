@@ -9,7 +9,8 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
- * JavaBean领域对象的共同基类，定义了ID属性和其访问字段
+ * Common base class for JavaBean domain objects,
+ * defining the ID property and its access fields
  *
  * @author
  * @date

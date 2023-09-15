@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 /**
- * 认证用户的数据仓库
+ * Repository for authenticated users
  *
- * @author
+ * @author sniper
  * @date
  **/
 @Component

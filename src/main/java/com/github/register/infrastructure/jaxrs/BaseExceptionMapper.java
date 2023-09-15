@@ -9,7 +9,8 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * 用于兜底的全局处理器，如果其他所有的Mapper都不合适，将由此处理把错误带到前端
+ * A global handler used for under the hood,
+ * which will handle bringing errors to the front-end if all other Mappers are inappropriate
  *
  * @author
  * @date

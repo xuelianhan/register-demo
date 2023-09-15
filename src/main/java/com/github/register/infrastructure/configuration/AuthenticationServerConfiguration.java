@@ -12,14 +12,24 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * Spring Security的用户认证服务器配置
+ * User authentication server configuration of Spring Security
  * <p>
- * 借用Spring Security作为认证服务器，告知服务器通过怎样的途径去查询用户、加密密码和验证用户真伪
- * 我们实际上并不使用Spring Security提供的认证表单，而是选择了前端通过OAuth2的密码模式，在授权过程中同时完成认证
- * 由于服务端整套安全机制（方法授权判断、OAuth2密码模式的用户认证、密码的加密算法）仍然是构建在Spring Security基础之上
- * 所以我们的认证服务、用户信息服务仍然继承着Spring Security提供的基类，并在这里注册到Spring Security当中
+ * Borrowing Spring Security as the authentication server informs the server of the pathway through which to query the user,
+ * encrypt the password, and verify the user's authenticity.
  *
- * @author
+ * Instead of using the authentication form provided by Spring Security,
+ * we actually chose the front-end password mode via OAuth2 to complete the authentication at the same time as the authorization process.
+ *
+ * Because the server-side security mechanism
+ * (method authorization judgment, OAuth2 password mode user authentication, password encryption algorithms)
+ * is still built on top of Spring Security.
+ *
+ * So our authentication service, user information service still inherits the base class provided by Spring Security,
+ * and is registered with Spring Security here.
+ *
+ * @author zhouzhiming
+ * @author sniper
+ *
  * @date
  **/
 @Configuration
@@ -39,8 +49,9 @@ public class AuthenticationServerConfiguration extends WebSecurityConfiguration 
     private PasswordEncoder encoder;
 
     /**
-     * 需要把AuthenticationManager主动暴漏出来
-     * 以便在授权服务器{@link AuthorizationServerConfiguration}中可以使用它来完成用户名、密码的认证
+     * Need to expose the AuthenticationManager to the public,
+     * so that it can be used in the authorization server {@link AuthorizationServerConfiguration}
+     * to complete the authentication of the username and password.
      */
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -48,8 +59,9 @@ public class AuthenticationServerConfiguration extends WebSecurityConfiguration 
     }
 
     /**
-     * 配置Spring Security的安全认证服务
-     * Spring Security的Web安全设置，将在资源服务器配置{@link ResourceServerConfiguration}中完成
+     * Configure Spring Security's security authentication service.
+     * Web security settings for Spring Security will be done in the Resource Server Configuration
+     * {@link ResourceServerConfiguration}
      */
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authenticAccountDetailsService).passwordEncoder(encoder);

@@ -13,11 +13,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * 基于用户名、密码的身份认证器
- * 该身份认证器会被{@link AuthenticationManager}验证管理器调用
- * 验证管理器支持多种验证方式，这里基于用户名、密码的的身份认证是方式之一
+ * Username, password based authenticator
+ * This authenticator will be called by {@link AuthenticationManager}.
+ * Authentication Manager supports multiple authentication methods,
+ * At here, The username and password based authentication is one of the methods
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  */
 @Named
@@ -30,27 +32,29 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
     private PasswordEncoder passwordEncoder;
 
     /**
-     * 认证处理
+     * Authentication processing
      * <p>
-     * 根据用户名查询用户资料，对比资料中加密后的密码
-     * 结果将返回一个Authentication的实现类（此处为UsernamePasswordAuthenticationToken）则代表认证成功
-     * 返回null或者抛出AuthenticationException的子类异常则代表认证失败
+     * Query the user's profile based on the username and compare the encrypted password in the profile.
+     * The result will return an Authentication implementation class
+     * (in this case, UsernamePasswordAuthenticationToken) means that authentication is successful.
+     * If the result returns null or throws a subclass of AuthenticationException, the authentication failed.
      */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName().toLowerCase();
         String password = (String) authentication.getCredentials();
-        // AuthenticationException的子类定义了多种认证失败的类型，这里仅处“理用户不存在”、“密码不正确”两种
-        // 用户不存在的话会直接由loadUserByUsername()抛出异常
+        // The subclasses of AuthenticationException define various types of authentication failures.
+        // At here, only "user does not exist" and "password is incorrect" are handled.
+        // If the user does not exist, an exception is thrown by loadUserByUsername().
         UserDetails user = authenticAccountDetailsService.loadUserByUsername(username);
-        if (!passwordEncoder.matches(password, user.getPassword())) throw new BadCredentialsException("密码不正确");
-        // 认证通过，返回令牌
+        if (!passwordEncoder.matches(password, user.getPassword())) throw new BadCredentialsException("Incorrect password");
+        // Authentication passed, return token
         return new UsernamePasswordAuthenticationToken(user, password, user.getAuthorities());
 
     }
 
     /**
-     * 判断该验证器能处理哪些认证
+     * Determine which authentications this authenticator can handle
      */
     @Override
     public boolean supports(Class<?> clazz) {

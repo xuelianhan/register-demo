@@ -9,9 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
 /**
- * 认证用户信息查询服务
+ * Inquiry Service for Certified User Information
  * <p>
- * {@link UserDetailsService}接口定义了从外部（数据库、LDAP，任何地方）根据用户名查询到
+ * {@link UserDetailsService}
  */
 @Named
 public class AuthenticAccountDetailsService implements UserDetailsService {
@@ -20,8 +20,11 @@ public class AuthenticAccountDetailsService implements UserDetailsService {
     private AuthenticAccountRepository accountRepository;
 
     /**
-     * 根据用户名查询用户角色、权限等信息
-     * 如果用户名无法查询到对应的用户，或者权限不满足，请直接抛出{@link UsernameNotFoundException}，勿返回null
+     * Query user roles and permissions based on username.
+     * If the username can not be queried to the corresponding user,
+     * or permissions do not meet,
+     * please directly throw {@link UsernameNotFoundException},
+     * do not return null
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

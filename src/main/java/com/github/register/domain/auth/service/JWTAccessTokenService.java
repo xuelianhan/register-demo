@@ -8,41 +8,50 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 
 /**
- * JWT访问令牌服务
+ * JWT Access Token Service
  * <p>
- * 在此服务中提供了令牌如何存储、携带哪些信息、如何签名、持续多长时间等相关内容的定义
- * 令牌服务应当会被授权服务器{@link com.github.register.infrastructure.configuration.AuthorizationServerConfiguration}注册验证Endpoint时候调用到
  *
- * @author
+ * Definitions of how the token is stored, what information it carries, how it is signed, how long it lasts,
+ * and other relevant elements are provided in this service.
+ *
+ * The token service should be called by the authorization server
+ * {@link com.github.register.infrastructure.configuration.AuthorizationServerConfiguration}
+ * when registering an authentication Endpoint.
+ *
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 @Named
 public class JWTAccessTokenService extends DefaultTokenServices {
 
     /**
-     * 构建JWT令牌，并进行默认的配置
+     * Building JWT tokens with default configuration
      */
     @Inject
     public JWTAccessTokenService(JWTAccessToken token, OAuthClientDetailsService clientService, AuthenticationManager authenticationManager) {
-        // 设置令牌的持久化容器
-        // 令牌持久化有多种方式，单节点服务可以存放在Session中，集群可以存放在Redis中
-        // 而JWT是后端无状态、前端存储的解决方案，Token的存储由前端完成
+        // Setting up the token's persistence container
+        // Token persistence can be done in a variety of ways,
+        // a single node service can store it in Session, and a cluster can store it in Redis.
+        // JWT is a back-end stateless, front-end storage solution,
+        // where the storage of tokens is done by the front-end.
         setTokenStore(new JwtTokenStore(token));
-        // 令牌支持的客户端详情
+        // Details of clients supported by tokens
         setClientDetailsService(clientService);
-        // 设置验证管理器，在鉴权的时候需要用到
+        // Set up the AuthenticationManager, which is needed for authentication.
         setAuthenticationManager(authenticationManager);
-        // 定义令牌的额外负载
+        // Define additional loads for tokens
         setTokenEnhancer(token);
-        // access_token有效期，单位：秒，默认12小时
+        // access_token expiration date, in seconds, default 12 hours
         setAccessTokenValiditySeconds(60 * 60 * 3);
-        // refresh_token的有效期，单位：秒, 默认30天
-        // 这决定了客户端选择“记住当前登录用户”的最长时效，即失效前都不用再请求用户赋权了
+        // The duration of the refresh_token, in seconds, 30 days by default.
+        // This determines the maximum amount of time the client can choose to "remember the currently logged-in user",
+        // i.e., the client doesn't have to ask for the user's authorization again until it expires.
         setRefreshTokenValiditySeconds(60 * 60 * 24 * 15);
-        // 是否支持refresh_token，默认false
+        // Whether to support refresh_token, default false
         setSupportRefreshToken(true);
-        // 是否复用refresh_token，默认为true
-        // 如果为false，则每次请求刷新都会删除旧的refresh_token，创建新的refresh_token
+        // Whether to reuse refresh_token, default is true
+        // If false, the old refresh_token is deleted and a new one is created for each request refresh.
         setReuseRefreshToken(true);
     }
 }

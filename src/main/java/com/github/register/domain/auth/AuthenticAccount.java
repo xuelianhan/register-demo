@@ -10,12 +10,15 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- * 认证用户模型
+ * Authenticated User Models
  * <p>
- * 用户注册之后，包含其业务属性，如姓名、电话、地址，用于业务发生，存储于Account对象中
- * 也包含其用于认证的属性，譬如密码、角色、是否停用，存储于AuthenticAccount对象中
+ * After a user is registered, it contains its business attributes,
+ * such as name, phone, and address, which are used for business generation and stored in the Account object.
+ * It also contains its attributes for authentication,
+ * such as password, role, and whether to deactivate, which are stored in the AuthenticAccount object.
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 public class AuthenticAccount extends Account implements UserDetails {
@@ -29,13 +32,14 @@ public class AuthenticAccount extends Account implements UserDetails {
         this();
         BeanUtils.copyProperties(origin, this);
         if (getId() == 1) {
-            // 由于没有做用户管理功能，默认给系统中第一个用户赋予管理员角色
+            // Since there is no user management feature,
+            // the first user in the system is given the administrator role by default
             authorities.add(new SimpleGrantedAuthority(Role.ADMIN));
         }
     }
 
     /**
-     * 该用户拥有的授权，譬如读取权限、修改权限、增加权限等等
+     * The authorizations the user has, such as read, modify, add, and so on.
      */
     private Collection<GrantedAuthority> authorities = new HashSet<>();
 
@@ -49,7 +53,7 @@ public class AuthenticAccount extends Account implements UserDetails {
     }
 
     /**
-     * 账号是否过期
+     * Whether the account is expired or not
      */
     @Override
     public boolean isAccountNonExpired() {
@@ -57,7 +61,7 @@ public class AuthenticAccount extends Account implements UserDetails {
     }
 
     /**
-     * 是否锁定
+     * Whether to lock or not
      */
     @Override
     public boolean isAccountNonLocked() {
@@ -65,7 +69,7 @@ public class AuthenticAccount extends Account implements UserDetails {
     }
 
     /**
-     * 密码是否过期
+     * Whether the password is expired or not
      */
     @Override
     public boolean isCredentialsNonExpired() {
@@ -73,7 +77,7 @@ public class AuthenticAccount extends Account implements UserDetails {
     }
 
     /**
-     * 是否被锁定
+     * Whether it is locked or not
      */
     @Override
     public boolean isEnabled() {

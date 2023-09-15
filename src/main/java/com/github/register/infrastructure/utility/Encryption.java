@@ -12,8 +12,9 @@ import java.util.Optional;
 public class Encryption {
 
     /**
-     * 配置认证使用的密码加密算法：BCrypt
-     * 由于在Spring Security很多验证器中都要用到{@link PasswordEncoder}的加密，所以这里要添加@Bean注解发布出去
+     * Configure the password encryption algorithm used for authentication: BCrypt
+     * Since the encryption of {@link PasswordEncoder} is used in many Spring Security authenticators,
+     * add the @Bean annotation here to publish out PasswordEncoder.
      */
     @Bean
     public PasswordEncoder passwordEncoder() {

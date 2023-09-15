@@ -19,7 +19,8 @@ import java.util.stream.Collectors;
  * Using Jersey to provide support of JAX-RS(JSR 370：Java API for Restful Web Services)
  * The prefix path "restful" of all the services is set here.
  *
- * @author
+ * @author zhouzhiming
+ * @author sniper
  * @date
  **/
 @Configuration
