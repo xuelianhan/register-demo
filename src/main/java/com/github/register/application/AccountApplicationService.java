@@ -13,7 +13,9 @@ import java.util.Optional;
 
 
 /**
- * 用户资源的应用服务接口
+ * Application Service Interface for user resources
+ * @author sniper
+ * @date Fri Sep 15, 2023
  **/
 @Named
 @Transactional

@@ -11,17 +11,17 @@ import org.springframework.context.annotation.Configuration;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 为系统提供一些代码上使用的缓存
+ * Provide some caches used on this application
  *
- * @author
- * @date
+ * @author sniper
+ * @date Fri Sep 15, 2023
  **/
 @Configuration
 public class CacheConfiguration {
 
     /**
-     * 系统默认缓存TTL时间：4分钟
-     * 一些需要用到缓存的数据，譬如支付单，需要按此数据来规划过期时间
+     * System default cache TTL time: 4 minutes.
+     * Some data need to plan the expiration time according to this function.
      */
     public static final long SYSTEM_DEFAULT_EXPIRES = 4 * 60 * 1000;
 

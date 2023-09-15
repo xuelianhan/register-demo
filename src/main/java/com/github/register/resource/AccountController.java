@@ -40,7 +40,7 @@ public class AccountController {
     private AccountApplicationService service;
 
     /**
-     * 根据用户名称获取用户详情
+     * Get user details based on user name
      * e.g. http://127.0.0.1:8080/accounts/1
      */
     @GET
@@ -51,7 +51,7 @@ public class AccountController {
     }
 
     /**
-     * 创建新的用户(注册)
+     * Creating a new user (registration)
      */
     @POST
     @CacheEvict(key = "#user.username")
@@ -60,7 +60,7 @@ public class AccountController {
     }
 
     /**
-     * 更新用户信息
+     * Updating user information
      */
     @PUT
     @CacheEvict(key = "#user.username")
@@ -70,7 +70,7 @@ public class AccountController {
 
 
     /**
-     * 标记单个用户为删除状态
+     * Marking an individual user as deleted
      */
     @PUT
     @CacheEvict(key = "#user.username")
@@ -79,7 +79,7 @@ public class AccountController {
     }
 
     /**
-     * 标记多个用户为删除状态
+     * Mark multiple users as delete
      */
     @PUT
     @CacheEvict(key = "#user.username")

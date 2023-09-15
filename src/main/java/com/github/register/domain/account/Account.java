@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 
 
 /**
- * 用户实体
+ * Entity of User
  *
  * @author
  * @date
@@ -18,31 +18,34 @@ import javax.validation.constraints.Pattern;
 @Entity
 public class Account extends BaseEntity {
 
-    @NotEmpty(message = "用户不允许为空")
+    @NotEmpty(message = "The username cannot be null.")
     private String username;
 
-    // 密码字段不参与序列化（但反序列化是参与的）、不参与更新（但插入是参与的）
-    // 这意味着密码字段不会在获取对象（很多操作都会关联用户对象）的时候泄漏出去；
-    // 也意味着此时“修改密码”一类的功能无法以用户对象资源的接口来处理（因为更新对象时密码不会被更新），需要单独提供接口去完成
+    /**
+     * The password fields are not involved in serialization (but deserialization is), not in updates (but insertion is)
+     * This means that the password field will not be leaked when fetching objects (many operations are associated with user objects);
+     * It also means that functions like "change password" cannot be handled by the interface to the user object's resources
+     * (because the password is not updated when the object is updated), and need to be handled by a separate interface.
+     */
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(updatable = false)
     private String password;
 
-    @NotEmpty(message = "用户姓名不允许为空")
+    @NotEmpty(message = "The nick name of user cannot be null.")
     private String name;
 
     private String avatar;
 
-    @Pattern(regexp = "1\\d{10}", message = "手机号格式不正确")
+    @Pattern(regexp = "1\\d{10}", message = "The phone format is illegal.")
     private String telephone;
 
-    @Email(message = "邮箱格式不正确")
+    @Email(message = "The email format is illegal")
     private String email;
 
     private String location;
 
     /**
-     * 是否删除状态：
+     * Whether or not the status is deleted:
      * 0: exist
      * 1: deleted.
      */
