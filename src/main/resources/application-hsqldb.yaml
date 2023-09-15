@@ -1,6 +1,8 @@
 database: hsqldb
 
 spring:
+  profiles:
+    active: hsqldb
   datasource:
     schema: "classpath:db/${database}/schema.sql"
     data: "classpath:db/${database}/data.sql"

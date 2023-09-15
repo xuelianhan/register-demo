@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * 使用Jersey来提供对JAX-RS（JSR 370：Java API for Restful Web Services）的支持
  * 这里设置了所有服务的前缀路径“restful”和restful服务资源的包路径
  *
- * @author
+ * @author sniper
  * @date
  **/
 @Configuration
@@ -31,7 +31,7 @@ public class JerseyConfiguration extends ResourceConfig {
     }
 
     /**
-     * Jersey的packages()方法在Jar形式运行下有问题，这里修理一下
+     * Fix the bug while the method of packages() in Jersey is running with Jar style.
      */
     private void scanPackages(String scanPackage) {
         ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);

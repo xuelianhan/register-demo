@@ -28,17 +28,17 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
     Account findByUsername(String username);
 
     /**
-     * 判断唯一性，用户名、邮箱、电话不允许任何一个重复
+     * Determine the uniqueness, no duplicates of username, email, or phone are allowed
      */
     boolean existsByUsernameOrEmailOrTelephone(String username, String email, String telephone);
 
     /**
-     * 判断唯一性，用户名、邮箱、电话不允许任何一个重复
+     * Determine the uniqueness, no duplicates of username, email, or phone are allowed
      */
     Collection<Account> findByUsernameOrEmailOrTelephone(String username, String email, String telephone);
 
     /**
-     * 判断存在性，用户名存在即为存在
+     * Determining the existence, the existence of username is an existence.
      */
     @Cacheable(key = "#username")
     boolean existsByUsername(String username);

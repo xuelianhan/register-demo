@@ -9,16 +9,16 @@ import org.slf4j.LoggerFactory;
 import java.util.function.Consumer;
 
 /**
- * 为了简化编码而设计的HTTP Response对象包装类和工具集
+ * HTTP Response object wrapper classes and toolset designed to simplify coding
  * <p>
- * 带有服务状态编码的（带有Code字段的）JavaBean领域对象包装类
- * Code字段的通常用于服务消费者判定该请求的业务处理是否成功。
+ * JavaBean field object wrapper classes with service status encoding (with Code field)
+ * The Code field is typically used by the service consumer to determine whether the business processing of the request was successful.
  * <p>
- * 统一约定：
- * - 当服务调用正常完成，返回Code一律以0表示
- * - 当服务调用产生异常，可自定义不为0的Code值，此时Message字段作为返回客户端的详细信息
+ * Unified Conventions:
+ * - When the service call is completed normally, the return Code is always expressed as 0.
+ * - When the service call produces an exception , you can customize the Code value is not 0 , the Message field as a return to the client's details .
  *
- * @author
+ * @author sniper
  * @date
  **/
 public abstract class CommonResponse {
