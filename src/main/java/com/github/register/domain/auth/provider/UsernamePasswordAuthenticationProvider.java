@@ -1,8 +1,8 @@
 package com.github.register.domain.auth.provider;
 
 import com.github.register.domain.auth.service.AuthenticAccountDetailsService;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

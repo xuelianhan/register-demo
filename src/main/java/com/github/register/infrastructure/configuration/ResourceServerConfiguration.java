@@ -1,7 +1,7 @@
 package com.github.register.infrastructure.configuration;
 
 import com.github.register.domain.auth.service.JWTAccessTokenService;
-import jakarta.annotation.security.RolesAllowed;
+import javax.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.annotation.Secured;
@@ -46,7 +46,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         // 关闭HTTP Header中的X-Frame-Options选项，允许页面在frame标签中打开
         http.headers(headers -> headers.frameOptions(fo -> fo.disable()));
         // 设置服务的安全规则
-        http.authorizeRequests().requestMatchers("/oauth/**").permitAll();
+        http.authorizeRequests().antMatchers("/oauth/**").permitAll();
     }
 
     @Override

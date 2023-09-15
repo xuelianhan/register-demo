@@ -1,7 +1,7 @@
 package com.github.register.domain.auth.service;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
  * JWT访问令牌服务
  * <p>
  * 在此服务中提供了令牌如何存储、携带哪些信息、如何签名、持续多长时间等相关内容的定义
- * 令牌服务应当会被授权服务器{@link com.github.fenixsoft.bookstore.infrastructure.configuration.AuthorizationServerConfiguration}注册验证Endpoint时候调用到
+ * 令牌服务应当会被授权服务器{@link com.github.register.infrastructure.configuration.AuthorizationServerConfiguration}注册验证Endpoint时候调用到
  *
  * @author
  * @date

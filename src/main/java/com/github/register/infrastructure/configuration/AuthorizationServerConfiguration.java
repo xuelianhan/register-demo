@@ -22,20 +22,20 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  * @author
  * @date
  **/
-//@Configuration
-//@EnableAuthorizationServer
+@Configuration
+@EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     /**
      * 令牌服务
      */
-    //@Autowired
+    @Autowired
     private JWTAccessTokenService tokenService;
 
     /**
      * OAuth2客户端信息服务
      */
-    //@Autowired
+    @Autowired
     private OAuthClientDetailsService clientService;
 
     /**
@@ -44,13 +44,13 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      * 一个认证服务管理器里面包含着多个可以从事不同认证类型的认证提供者（Provider）
      * 认证服务由认证服务器{@link AuthenticationServerConfiguration}定义并提供注入源
      */
-    //@Autowired
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     /**
      * 用户信息服务
      */
-    //@Autowired
+    @Autowired
     private AuthenticAccountDetailsService accountService;
 
 

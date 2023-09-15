@@ -10,8 +10,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
-import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager;
 
 /**
  * Spring Security的用户认证服务器配置
@@ -26,7 +24,7 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent
  **/
 @Configuration
 @EnableWebSecurity
-public class AuthenticationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+public class AuthenticationServerConfiguration extends WebSecurityConfiguration {
 
     @Autowired
     private AuthenticAccountDetailsService authenticAccountDetailsService;
@@ -38,11 +36,7 @@ public class AuthenticationServerConfiguration extends AuthorizationServerConfig
     private PreAuthenticatedAuthenticationProvider preProvider;
 
     @Autowired
-    private OAuth2AuthenticationManager oAuth2AuthenticationManager;
-
-    @Autowired
     private PasswordEncoder encoder;
-
 
     /**
      * 需要把AuthenticationManager主动暴漏出来
@@ -50,7 +44,7 @@ public class AuthenticationServerConfiguration extends AuthorizationServerConfig
      */
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        return oAuth2AuthenticationManager;
+        return super.authenticationManagerBean();
     }
 
     /**

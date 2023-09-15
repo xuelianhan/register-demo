@@ -2,11 +2,11 @@ package com.github.register.domain.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.register.domain.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 
 /**
@@ -40,6 +40,13 @@ public class Account extends BaseEntity {
     private String email;
 
     private String location;
+
+    /**
+     * 是否删除状态：
+     * 0: exist
+     * 1: deleted.
+     */
+    private Integer deleted;
 
     public String getUsername() {
         return username;
@@ -95,5 +102,13 @@ public class Account extends BaseEntity {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 }

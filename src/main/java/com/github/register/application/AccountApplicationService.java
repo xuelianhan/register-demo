@@ -2,10 +2,13 @@ package com.github.register.application;
 
 import com.github.register.domain.account.Account;
 import com.github.register.domain.account.AccountRepository;
+import com.github.register.domain.account.DeletedStatusEnum;
 import com.github.register.infrastructure.utility.Encryption;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-import jakarta.transaction.Transactional;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -32,6 +35,31 @@ public class AccountApplicationService {
 
     public void updateAccount(Account account) {
         repository.save(account);
+    }
+
+    public void markAccountDeleted(Account account) {
+        account.setDeleted(DeletedStatusEnum.DELETED.getCode());
+        repository.save(account);
+    }
+
+    public void markAccountDeletedById(Integer id) {
+        Optional<Account> op = repository.findById(id);
+        if (op.isPresent()) {
+            Account account = op.get();
+            account.setDeleted(DeletedStatusEnum.DELETED.getCode());
+            repository.save(account);
+        }
+    }
+
+    public void markAccountDeletedByIds(List<Integer> ids) {
+        List<Account> list = repository.findAllById(ids);
+        if (null == list || list.isEmpty()) {
+            return;
+        }
+        list.forEach( a -> {
+            a.setDeleted(DeletedStatusEnum.DELETED.getCode());
+        });
+        repository.saveAll(list);
     }
 
 }

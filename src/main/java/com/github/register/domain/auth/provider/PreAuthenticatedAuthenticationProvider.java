@@ -1,7 +1,7 @@
 package com.github.register.domain.auth.provider;
 
 import com.github.register.domain.auth.AuthenticAccount;
-import jakarta.inject.Named;
+import javax.inject.Named;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

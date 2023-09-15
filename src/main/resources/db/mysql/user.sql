@@ -1,0 +1,7 @@
+CREATE DATABASE IF NOT EXISTS imagebase;
+
+ALTER DATABASE imagebase
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_general_ci;
+
+GRANT ALL PRIVILEGES ON imagebase.* TO 'imagebase@%';

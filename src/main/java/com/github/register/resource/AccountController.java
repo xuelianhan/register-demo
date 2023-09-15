@@ -6,11 +6,11 @@ import com.github.register.domain.account.validation.AuthenticatedAccount;
 import com.github.register.domain.account.validation.NotConflictAccount;
 import com.github.register.domain.account.validation.UniqueAccount;
 import com.github.register.infrastructure.jaxrs.CommonResponse;
-import jakarta.inject.Inject;
-import jakarta.validation.Valid;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
+import javax.validation.Valid;
+import javax.inject.Inject;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -30,13 +30,14 @@ import org.springframework.stereotype.Component;
 @CacheConfig(cacheNames = "resource.account")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class AccountResource {
+public class AccountController {
 
     @Inject
     private AccountApplicationService service;
 
     /**
      * 根据用户名称获取用户详情
+     * e.g. http://127.0.0.1:8080/accounts/1
      */
     @GET
     @Path("/{username}")
@@ -46,7 +47,7 @@ public class AccountResource {
     }
 
     /**
-     * 创建新的用户
+     * 创建新的用户(注册)
      */
     @POST
     @CacheEvict(key = "#user.username")
@@ -62,4 +63,26 @@ public class AccountResource {
     public Response updateUser(@Valid @AuthenticatedAccount @NotConflictAccount Account user) {
         return CommonResponse.op(() -> service.updateAccount(user));
     }
+
+
+    /**
+     * 更新用户信息
+     */
+    @PUT
+    @CacheEvict(key = "#user.username")
+    public Response markUserDeleted(@Valid @AuthenticatedAccount @NotConflictAccount Account user) {
+        return CommonResponse.op(() -> service.updateAccount(user));
+    }
+
+    /**
+     * 更新用户信息
+     */
+    @PUT
+    @CacheEvict(key = "#user.username")
+    public Response markUsersDelete(@Valid @AuthenticatedAccount @NotConflictAccount Account user) {
+        return CommonResponse.op(() -> service.updateAccount(user));
+    }
+
+
+
 }

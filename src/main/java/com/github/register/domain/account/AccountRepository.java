@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -55,6 +56,8 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
 
     @Cacheable(key = "#id")
     Optional<Account> findById(Integer id);
+
+    List<Account> findAllById(List<Integer> ids);
 
     @Cacheable(key = "#id")
     boolean existsById(Integer id);

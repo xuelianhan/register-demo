@@ -1,8 +1,8 @@
 package com.github.register.domain.auth.service;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.provider.ClientDetails;

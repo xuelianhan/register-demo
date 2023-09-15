@@ -19,7 +19,9 @@ that were sent.
 
 ## How to run?
 - Running with Docker：
-
 > ```bash
-> $ docker run -d -p 8080:8080 --name register-demo
+> $ mvnw package
+> $ docker build -t register-demo .
+> $ docker image ls
+> $ docker run -d -p 8080:8080 register-demo
 > ```

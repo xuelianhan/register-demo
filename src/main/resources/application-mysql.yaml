@@ -1,3 +1,5 @@
+database: mysql
+
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver

@@ -1,7 +1,7 @@
 package com.github.register.domain.auth.service;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;

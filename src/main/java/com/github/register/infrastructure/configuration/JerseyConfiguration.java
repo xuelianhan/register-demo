@@ -1,8 +1,8 @@
 package com.github.register.infrastructure.configuration;
 
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.ext.Provider;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.Path;
+import javax.ws.rs.ext.Provider;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.context.annotation.Configuration;

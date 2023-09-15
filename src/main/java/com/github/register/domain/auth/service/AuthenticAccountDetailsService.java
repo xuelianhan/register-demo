@@ -1,8 +1,8 @@
 package com.github.register.domain.auth.service;
 
 import com.github.register.domain.auth.AuthenticAccountRepository;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

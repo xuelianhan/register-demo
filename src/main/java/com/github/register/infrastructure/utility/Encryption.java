@@ -1,6 +1,6 @@
 package com.github.register.infrastructure.utility;
 
-import jakarta.inject.Named;
+import javax.inject.Named;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;

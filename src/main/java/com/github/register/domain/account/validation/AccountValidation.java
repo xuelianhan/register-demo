@@ -3,9 +3,9 @@ package com.github.register.domain.account.validation;
 import com.github.register.domain.account.Account;
 import com.github.register.domain.account.AccountRepository;
 import com.github.register.domain.auth.AuthenticAccount;
-import jakarta.inject.Inject;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.inject.Inject;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 
