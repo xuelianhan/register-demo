@@ -21,5 +21,3 @@ e
 5src/test/java/com/github/register/DBRollbackBase.java,f/2/f2e334decd4b0e13f142144d890ce9dd0b87574c
 V
 &src/main/resources/db/mysql/update.sql,2/4/24edf076476f181549235643bbd5f155a376d842
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

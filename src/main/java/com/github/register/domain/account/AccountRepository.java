@@ -22,7 +22,7 @@ import java.util.Set;
 public interface AccountRepository extends CrudRepository<Account, Integer> {
 
     @Override
-    Iterable<Account> findAll();
+    List<Account> findAll();
 
 
     @Cacheable(key = "#username")

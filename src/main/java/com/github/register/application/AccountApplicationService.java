@@ -14,7 +14,7 @@ import java.util.Optional;
 
 /**
  * Application Service Interface for user resources
- * @author zhouzhiming
+ *
  * @author sniper
  * @date Fri Sep 15, 2023
  **/
@@ -35,6 +35,15 @@ public class AccountApplicationService {
 
     public Account findAccountByUsername(String username) {
         return repository.findByUsername(username);
+    }
+
+    /**
+     * Query accounts of this Admin
+     * @return
+     */
+    public List<Account> findAllAccounts() {
+        //todo
+        return repository.findAll();
     }
 
     public void updateAccount(Account account) {
