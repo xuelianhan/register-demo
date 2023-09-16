@@ -69,7 +69,7 @@ public class AccountApplicationService {
         if (null == list || list.isEmpty()) {
             return;
         }
-        list.forEach( a -> {
+        list.forEach(a -> {
             a.setDeleted(DeletedStatusEnum.DELETED.getCode());
         });
         repository.saveAll(list);
