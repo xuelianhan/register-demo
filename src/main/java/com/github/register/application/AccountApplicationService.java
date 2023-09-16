@@ -7,9 +7,11 @@ import com.github.register.infrastructure.utility.Encryption;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 /**
@@ -42,7 +44,6 @@ public class AccountApplicationService {
      * @return
      */
     public List<Account> findAllAccounts() {
-        //todo
         return repository.findAll();
     }
 
@@ -64,8 +65,14 @@ public class AccountApplicationService {
         }
     }
 
-    public void markAccountDeletedByIds(List<Integer> ids) {
-        List<Account> list = repository.findAllByIdIn(new HashSet<>(ids));
+    public void markAccountDeletedByIds(String ids) {
+        List<Integer> idList = Arrays.stream(ids.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        if (null == idList || idList.isEmpty()) {
+            return;
+        }
+        List<Account> list = repository.findAllByIdIn(new HashSet<>(idList));
         if (null == list || list.isEmpty()) {
             return;
         }

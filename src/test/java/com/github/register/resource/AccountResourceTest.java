@@ -8,7 +8,6 @@ import javax.ws.rs.core.Response;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * @author zhouzhiming
  * @author sniper
  * @date
  */
@@ -25,6 +24,14 @@ public class AccountResourceTest extends JAXRSResourceBase {
     @Test
     void getUserWithNotExistAccount() {
         assertNoContent(get("/accounts/nobody"));
+    }
+
+
+    @Test
+    void getUserList() {
+        authenticatedScope(() -> {
+            assertOK(get("/accounts"));
+        });
     }
 
     @Test
@@ -54,14 +61,18 @@ public class AccountResourceTest extends JAXRSResourceBase {
     @Test
     void markUserDeleted() {
         authenticatedScope(() -> {
-
+            Response resp = get("/accounts/sniper");
+            Account account = resp.readEntity(Account.class);
+            assertOK(post("/accounts/markUserDeleted", account));
         });
     }
 
     @Test
     void markUsersDeleted() {
         authenticatedScope(() -> {
-
+            Response resp = get("/accounts/sniper");
+            Account account = resp.readEntity(Account.class);
+            assertOK(post("/accounts", account));
         });
     }
 

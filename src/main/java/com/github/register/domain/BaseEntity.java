@@ -12,7 +12,7 @@ import java.io.Serializable;
  * Common base class for JavaBean domain objects,
  * defining the ID property and its access fields
  *
- * @author
+ * @author sniper
  * @date
  **/
 @MappedSuperclass

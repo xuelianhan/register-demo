@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  * A global handler used for under the hood,
  * which will handle bringing errors to the front-end if all other Mappers are inappropriate
  *
- * @author
+ * @author sniper
  * @date
  **/
 @Provider

@@ -20,7 +20,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  * (the location of the endpoint, the request method, what kind of token to use, and what kind of clients are supported)
  * and the user authentication service and user details query service required for OAuth2's password mode.
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * But many front-end developers are accustomed to handling exceptions in JSON-RPC style.
  * So this code container is still retained, and used to return to the client in the form of "{code,message,data}" object format.
  *
- * @author
+ * @author sniper
  * @date
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -29,7 +29,7 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
  *
  * The use of password mode to solve here is for the next stage of demonstration of microservice
  * after the authentication between services in preparation for the subsequent expansion as well as comparison.
- * @author zhouzhiming
+ *
  * @author sniper
  * @date
  **/

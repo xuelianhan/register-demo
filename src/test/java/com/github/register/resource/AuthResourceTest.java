@@ -3,6 +3,8 @@ package com.github.register.resource;
 import org.json.JSONException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Response;
@@ -13,6 +15,8 @@ import javax.ws.rs.core.Response;
  */
 public class AuthResourceTest extends JAXRSResourceBase {
 
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Test
     void refreshToken() throws JSONException {
         String prefix = "http://localhost:" + port + "/oauth/token?";
@@ -22,6 +26,7 @@ public class AuthResourceTest extends JAXRSResourceBase {
         url = prefix + "refresh_token=" + refreshToken + "&grant_type=refresh_token&client_id=imagebase&client_secret=ImageBase2023Run";
         resp = ClientBuilder.newClient().target(url).request().get();
         String accessToken = json(resp).getString("access_token");
+        log.info("accessToken:{}", accessToken);
         Assertions.assertNotNull(accessToken);
     }
 }

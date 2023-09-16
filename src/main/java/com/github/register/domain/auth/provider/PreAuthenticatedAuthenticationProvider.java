@@ -24,7 +24,6 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedC
  * 3.At this time, just check whether the user has deactivation, lockout, password expiration, account expiration, etc.
  * If not, you can re-issue the access token to the client according to the JWT token refresh expiration period
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  * @see <a href="https://docs.spring.io/spring-security/site/docs/3.0.x/reference/preauth.html">Pre-Authentication Scenarios</a>

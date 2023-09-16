@@ -41,7 +41,6 @@ import java.util.Map;
  * but should not store too much information to cause the HTTP Header is too large,
  * especially should not store sensitive information.
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  */

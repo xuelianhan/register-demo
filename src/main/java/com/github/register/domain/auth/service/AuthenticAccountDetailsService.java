@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  * Inquiry Service for Certified User Information
  * <p>
  * {@link UserDetailsService}
+ * @author sniper
  */
 @Named
 public class AuthenticAccountDetailsService implements UserDetailsService {

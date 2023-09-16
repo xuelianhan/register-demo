@@ -12,7 +12,6 @@ import javax.validation.constraints.Pattern;
 /**
  * Entity of User
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  */

@@ -26,7 +26,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
  * JSR 250 standard annotation {@link RolesAllowed}, complete replacement for Spring's {@link Secured} functionality
  * and Spring annotations {@link PreAuthorize}, {@link PostAuthorize} that can use EL expressions.
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/

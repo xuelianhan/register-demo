@@ -17,7 +17,6 @@ import java.util.HashSet;
  * It also contains its attributes for authentication,
  * such as password, role, and whether to deactivate, which are stored in the AuthenticAccount object.
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/
@@ -31,6 +30,8 @@ public class AuthenticAccount extends Account implements UserDetails {
     public AuthenticAccount(Account origin) {
         this();
         BeanUtils.copyProperties(origin, this);
+        //todo
+        //getId() == 1 need to modify
         if (getId() == 1) {
             // Since there is no user management feature,
             // the first user in the system is given the administrator role by default

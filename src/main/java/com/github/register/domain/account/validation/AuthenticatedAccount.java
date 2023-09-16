@@ -15,7 +15,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * The user must be the same as the currently logged-in user
  * The equivalent of using Spring Security's @PreAuthorize("#{user.name == authentication.name}") authentication
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/

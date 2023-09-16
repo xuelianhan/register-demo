@@ -49,6 +49,7 @@ class JAXRSResourceBase extends com.github.register.DBRollbackBase {
 
     /**
      * The unit test always uses the user of sniper for logins.
+     * http://localhost:8080/oauth/token?username=sniper&password=MFfTW3uNI4eqhwDkG7HP9p2mzEUu%2Fr2&grant_type=password&client_id=imagebase&client_secret=ImageBase2023Run
      */
     void login() {
         String url = "http://localhost:" + port + "/oauth/token?username=sniper&password=MFfTW3uNI4eqhwDkG7HP9p2mzEUu%2Fr2&grant_type=password&client_id=imagebase&client_secret=ImageBase2023Run";

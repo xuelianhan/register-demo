@@ -19,7 +19,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * changing a registered account's email address to a value that
  * matches that of an existing registered account is a conflict.
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/

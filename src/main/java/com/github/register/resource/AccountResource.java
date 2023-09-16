@@ -7,22 +7,20 @@ import com.github.register.domain.account.validation.NotConflictAccount;
 import com.github.register.domain.account.validation.UniqueAccount;
 import com.github.register.domain.auth.Role;
 import com.github.register.infrastructure.jaxrs.CommonResponse;
-
-import javax.annotation.security.RolesAllowed;
-import javax.validation.Valid;
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.security.RolesAllowed;
+import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 /**
@@ -32,7 +30,6 @@ import org.slf4j.LoggerFactory;
  * providing an entry point to manage the user's resources {@link Account}.
  * @see <a href="https://mkyong.com/webservices/jax-rs/jax-rs-pathparam-example/"></a>
  *
- * @author zhouzhiming
  * @author sniper
  * @date Fri Seq 15, 2023
  **/
@@ -60,11 +57,15 @@ public class AccountResource {
         return service.findAccountByUsername(username);
     }
 
+    /**
+     * Get all accounts information.
+     * e.g. GET http://127.0.0.1:8080/restful/accounts
+     * @return
+     */
     @GET
-    @Path("/user/list")
+    @Cacheable(key = "'ALL_USER'")
     @RolesAllowed(Role.ADMIN)
-    public List<Account> getUserList(@Valid @AuthenticatedAccount Account user) {
-        //todo
+    public List<Account> getUserList() {
         return service.findAllAccounts();
     }
 
@@ -93,22 +94,23 @@ public class AccountResource {
 
     /**
      * Marking an individual user as deleted
-     * e.g. GET http://127.0.0.1:8080/restful/accounts/markUserDeleted/123
+     * e.g. DELETE http://127.0.0.1:8080/restful/accounts/markUserDeleted/3
      */
-    @GET
+    @DELETE
     @Path("/markUserDeleted")
     @RolesAllowed(Role.ADMIN)
-    public Response markUserDeleted(@Valid @AuthenticatedAccount Account user, @QueryParam("deletedUserId")Integer deletedUserId) {
+    public Response markUserDeleted(@PathParam("deletedUserId")Integer deletedUserId) {
         return CommonResponse.op(() -> service.markAccountDeletedById(deletedUserId));
     }
 
     /**
      * Mark multiple users as delete
+     * e.g. DELETE http://127.0.0.1:8080/restful/accounts/markUsersDeleted?ids=2,3
      */
-    @POST
-    @Path("/markUsersDeleted/")
+    @DELETE
+    @Path("/markUsersDeleted")
     @RolesAllowed(Role.ADMIN)
-    public Response markUsersDeleted(@Valid @AuthenticatedAccount Account user, @QueryParam("ids") List<Integer> ids) {
+    public Response markUsersDeleted(@QueryParam("ids") String ids) {
         return CommonResponse.op(() -> service.markAccountDeletedByIds(ids));
     }
 

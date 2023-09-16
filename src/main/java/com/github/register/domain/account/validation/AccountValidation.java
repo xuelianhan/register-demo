@@ -19,7 +19,6 @@ import java.util.function.Predicate;
  * For example, when adding a new user, determine if the user object is allowed to be unique,
  * and when modifying a user, determine if the user exists
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/

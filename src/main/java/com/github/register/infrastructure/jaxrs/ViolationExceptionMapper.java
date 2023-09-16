@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * This class is used to unify the handling of error messages
  * that brought back to the client in Resource due to validator validation failures.
  *
- * @author
+ * @author sniper
  * @date
  **/
 @Provider

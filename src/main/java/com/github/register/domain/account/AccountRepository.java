@@ -14,7 +14,6 @@ import java.util.Set;
 /**
  * User Object Data Repository
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/

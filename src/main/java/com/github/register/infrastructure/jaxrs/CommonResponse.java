@@ -18,7 +18,6 @@ import java.util.function.Consumer;
  * - When the service call is completed normally, the return Code is always expressed as 0.
  * - When the service call produces an exception , you can customize the Code value is not 0 , the Message field as a return to the client's details .
  *
- * @authour zhouzhiming
  * @author sniper
  * @see <a href="https://www.baeldung.com/jax-rs-spec-and-implementations"></a>
  * @date

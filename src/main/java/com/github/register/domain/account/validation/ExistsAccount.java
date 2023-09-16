@@ -14,7 +14,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * Represents that a user is present in the data warehouse
  *
- * @author
+ * @author sniper
  * @date
  **/
 @Documented

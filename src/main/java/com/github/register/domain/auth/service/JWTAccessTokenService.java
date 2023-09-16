@@ -18,7 +18,6 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
  * {@link com.github.register.infrastructure.configuration.AuthorizationServerConfiguration}
  * when registering an authentication Endpoint.
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/

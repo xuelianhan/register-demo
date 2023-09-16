@@ -18,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Authentication Manager supports multiple authentication methods,
  * At here, The username and password based authentication is one of the methods
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  */

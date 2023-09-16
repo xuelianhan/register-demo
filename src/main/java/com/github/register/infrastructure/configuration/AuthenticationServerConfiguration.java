@@ -27,7 +27,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * So our authentication service, user information service still inherits the base class provided by Spring Security,
  * and is registered with Spring Security here.
  *
- * @author zhouzhiming
  * @author sniper
  *
  * @date

@@ -15,7 +15,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * <p>
  * The unique means that not only the username, but also the cell phone and email are not allowed to be duplicated.
  *
- * @author zhouzhiming
  * @author sniper
  * @date
  **/
