@@ -61,18 +61,14 @@ public class AccountResourceTest extends JAXRSResourceBase {
     @Test
     void markUserDeleted() {
         authenticatedScope(() -> {
-            Response resp = get("/accounts/sniper");
-            Account account = resp.readEntity(Account.class);
-            assertOK(post("/accounts/markUserDeleted", account));
+            assertOK(delete("/accounts/markUserDeleted/3"));
         });
     }
 
     @Test
     void markUsersDeleted() {
         authenticatedScope(() -> {
-            Response resp = get("/accounts/sniper");
-            Account account = resp.readEntity(Account.class);
-            assertOK(post("/accounts", account));
+            assertOK(delete("/accounts/markUsersDeleted?ids=2,3"));
         });
     }
 

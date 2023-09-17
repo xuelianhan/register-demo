@@ -20,10 +20,11 @@ public class AuthResourceTest extends JAXRSResourceBase {
     @Test
     void refreshToken() throws JSONException {
         String prefix = "http://localhost:" + port + "/oauth/token?";
-        String url = prefix + "username=sniper&password=MFfTW3uNI4eqhwDkG7HP9p2mzEUu%2Fr2&grant_type=password&client_id=imagebase&client_secret=ImageBase2023Run";
+        String url = prefix + "username=sniper&password=MFfTW3uNI4eqhwDkG7HP9p2mzEUu%2Fr2&grant_type=password&client_id=register_demo&client_secret=register_demo";
         Response resp = ClientBuilder.newClient().target(url).request().get();
+        log.info("resp:{}", json(resp).toString());
         String refreshToken = json(resp).getString("refresh_token");
-        url = prefix + "refresh_token=" + refreshToken + "&grant_type=refresh_token&client_id=imagebase&client_secret=ImageBase2023Run";
+        url = prefix + "refresh_token=" + refreshToken + "&grant_type=refresh_token&&client_id=register_demo&client_secret=register_demo";
         resp = ClientBuilder.newClient().target(url).request().get();
         String accessToken = json(resp).getString("access_token");
         log.info("accessToken:{}", accessToken);
